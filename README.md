@@ -19,9 +19,9 @@ Log rotation is out of this library responsibility. One can use [logrotate](http
 
 ```sh
 # latest version
-$ npm install github:ipatalas/elastic-logger
+$ npm install github:ipatalas/home-logger
 # specific version
-$ npm install github:ipatalas/elastic-logger#v1.1
+$ npm install github:ipatalas/home-logger#v1.1
 ```
 
 List of all versions: https://github.com/ipatalas/home-logger/releases
