@@ -1,0 +1,22 @@
+{
+  "name": "home-logger",
+  "version": "1.0.0",
+  "description": "That's a simple wrapper over bunyan logger which makes it easier to log everything from apps I run at home. That's mainly to remove all boilerplate around logging and leave just pure logic:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ipatalas/home-logger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ipatalas/home-logger/issues"
+  },
+  "homepage": "https://github.com/ipatalas/home-logger#readme",
+  "dependencies": {
+    "pino": "^6.3.0"
+  }
+}
