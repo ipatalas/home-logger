@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const pino = require('pino');
 
 /**
@@ -7,6 +8,8 @@ const pino = require('pino');
  */
 function createLogger(project, appName) {
     const logPath = getLogPath(project, appName);
+
+    fs.mkdirSync(path.dirname(logPath), { recursive: true });
 
     const logger = pino({
         name: project,
