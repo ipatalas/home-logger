@@ -8,8 +8,13 @@ const pino = require('pino');
  */
 function createLogger(project, appName) {
     const logPath = getLogPath(project, appName);
+    const logDir = path.dirname(logPath);
+    const pidFile = path.join(logDir, path.basename(logPath, '.log') + '.pid');
 
-    fs.mkdirSync(path.dirname(logPath), { recursive: true });
+    fs.mkdirSync(logDir, { recursive: true });
+    fs.writeFileSync(pidFile, process.pid);
+
+    const dest = pino.destination(logPath);
 
     const logger = pino({
         name: project,
@@ -19,7 +24,10 @@ function createLogger(project, appName) {
             }
         },
         timestamp: pino.stdTimeFunctions.isoTime
-    }, logPath);
+    }, dest);
+
+    process.on('SIGHUP', () => dest.reopen());
+    process.on('exit', () => fs.unlinkSync(pidFile));
 
     if (appName) {
         return logger.child({
